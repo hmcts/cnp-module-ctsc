@@ -52,7 +52,7 @@ resource "azurerm_route_table" "route_postfix" {
     name                   = "to_hub_fw"
     address_prefix         = "0.0.0.0/0"
     next_hop_type          = "VirtualAppliance"
-    next_hop_in_ip_address = "${module.palo_alto.ilb_private_ip_address}"
+    next_hop_in_ip_address = "${var.trusted_destination_ip}"
   }
 }
 

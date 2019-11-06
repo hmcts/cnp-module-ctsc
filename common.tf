@@ -168,30 +168,30 @@ environ = $${environ}
 EOF
 
 
-  vars {
-    postfix0_ip = "${element(azurerm_network_interface.postfix_trusted_nic.*.private_ip_address, 0)}"
-    postfix1_ip = "${element(azurerm_network_interface.postfix_trusted_nic.*.private_ip_address, 1)}"
-    key_path                 = "~/.ssh/id_rsa"
-    mysql_host               = "${azurerm_mysql_server.db.fqdn}"
-    mysql_db                 = "${azurerm_mysql_database.postfix.name}"
-    mysql_admin_user         = "${data.azurerm_key_vault_secret.mysql_admin_user.value}"
-    mysql_admin_password     = "${data.azurerm_key_vault_secret.mysql_admin_password.value}"
-    mail_host0               = "${local.env_name}0.${data.azurerm_key_vault_secret.dns_name.value}"
-    mail_host1               = "${local.env_name}1.${data.azurerm_key_vault_secret.dns_name.value}"
-    mail_user                = "${data.azurerm_key_vault_secret.mail_user.value}"
-    mail_password            = "${data.azurerm_key_vault_secret.mail_password.value}"
-    mail_domain              = "${data.azurerm_key_vault_secret.dns_name.value}"
-    ssh_user                 = "${data.azurerm_key_vault_secret.ssh_admin_user.value}"
-    maildomain               = "${data.azurerm_key_vault_secret.dns_name.value}"
-    storage_account_name     = "${azurerm_storage_account.data-stor.name}"
-    postfix_share_access_key = "${azurerm_storage_account.data-stor.primary_access_key}"
-    mysql_mailadmin_user     = "${data.azurerm_key_vault_secret.mysql_mailadmin_user.value}"
-    mysql_mailadmin_password = "${data.azurerm_key_vault_secret.mysql_mailadmin_password.value}"
-    mysql_mailread_user      = "${data.azurerm_key_vault_secret.mysql_mailread_user.value}"
-    mysql_mailread_password  = "${data.azurerm_key_vault_secret.mysql_mailread_password.value}"
-    pfx_password             = "${data.azurerm_key_vault_secret.pfx_password.value}"
-    environ                  = "${var.environment}"
-  }
+#   vars {
+#     postfix0_ip = "${element(azurerm_network_interface.postfix_trusted_nic.*.private_ip_address, 0)}"
+#     postfix1_ip = "${element(azurerm_network_interface.postfix_trusted_nic.*.private_ip_address, 1)}"
+#     key_path                 = "~/.ssh/id_rsa"
+#     mysql_host               = "${azurerm_mysql_server.db.fqdn}"
+#     mysql_db                 = "${azurerm_mysql_database.postfix.name}"
+#     mysql_admin_user         = "${data.azurerm_key_vault_secret.mysql_admin_user.value}"
+#     mysql_admin_password     = "${data.azurerm_key_vault_secret.mysql_admin_password.value}"
+#     mail_host0               = "${local.env_name}0.${data.azurerm_key_vault_secret.dns_name.value}"
+#     mail_host1               = "${local.env_name}1.${data.azurerm_key_vault_secret.dns_name.value}"
+#     mail_user                = "${data.azurerm_key_vault_secret.mail_user.value}"
+#     mail_password            = "${data.azurerm_key_vault_secret.mail_password.value}"
+#     mail_domain              = "${data.azurerm_key_vault_secret.dns_name.value}"
+#     ssh_user                 = "${data.azurerm_key_vault_secret.ssh_admin_user.value}"
+#     maildomain               = "${data.azurerm_key_vault_secret.dns_name.value}"
+#     storage_account_name     = "${azurerm_storage_account.data-stor.name}"
+#     postfix_share_access_key = "${azurerm_storage_account.data-stor.primary_access_key}"
+#     mysql_mailadmin_user     = "${data.azurerm_key_vault_secret.mysql_mailadmin_user.value}"
+#     mysql_mailadmin_password = "${data.azurerm_key_vault_secret.mysql_mailadmin_password.value}"
+#     mysql_mailread_user      = "${data.azurerm_key_vault_secret.mysql_mailread_user.value}"
+#     mysql_mailread_password  = "${data.azurerm_key_vault_secret.mysql_mailread_password.value}"
+#     pfx_password             = "${data.azurerm_key_vault_secret.pfx_password.value}"
+#     environ                  = "${var.environment}"
+#   }
 }
 
 resource "null_resource" "update_inventory" {
